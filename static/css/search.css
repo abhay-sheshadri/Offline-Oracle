@@ -1,0 +1,9 @@
+.answer-cell {
+    border: black;
+    border-width: 5px;
+    background-color: yellow;
+}
+
+.h5 {
+    justify-content: center;
+}

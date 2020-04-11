@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Corona Search</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    </head>
+    <body>
+
+        <script>
+            function getUrl() {
+                var searcher = document.getElementById("searcher");
+                window.location.href = "search?q=" + encodeURIComponent(searcher.value)
+            }
+        </script>
+
+       <div class="search-box">
+           <input id="searcher" class="search-txt" type="text" name="" placeholder="Ask any question">
+           <a id = "searchButton" href="javascript:getUrl()" >
+              <img class="search-btn-image" src="{{ url_for('static', filename='img/search.png') }}"> 
+           </a>
+       </div>
+
+    </body>
+</html>

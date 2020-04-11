@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Search Results</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
+    </head>
+    <body>
+        {% for answer in answers %}
+            <div class="answer-cell">
+                <h5> {{ answer["answer"] }} </h5>
+                <a href="{{ answer['source'] }}" > {{ answer["source"] }}</a>
+            </div>
+        {% endfor %}
+    </body>
+</html>
