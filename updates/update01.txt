@@ -1,0 +1,19 @@
+INSERT:
+Hours before, the U.S. surpassed 2,000 coronavirus deaths in a day for the first time, and soon became the country with the most coronavirus deaths, passing Italy's death toll.|https://www.usatoday.com/story/news/health/2020/04/12/coronavirus-stimulus-payments-bank-accounts/2976552001/
+Worldwide, there are at least 1,700,000 million cases and 109,000 deaths, according to data compiled by Johns Hopkins University.| https://www.usatoday.com/story/news/health/2020/04/12/coronavirus-stimulus-payments-bank-accounts/2976552001/
+At least 409,000 people have recovered worldwide.|https://www.usatoday.com/story/news/health/2020/04/12/coronavirus-stimulus-payments-bank-accounts/2976552001/
+The incubation period means the time between catching the virus and beginning to have symptoms of the disease. Most estimates of the incubation period for COVID-19 range from 1-14 days, most commonly around five days.|https://www.who.int/news-room/q-a-detail/q-a-coronaviruses
+People with COVID-19 generally develop signs and symptoms, including mild respiratory symptoms and fever, on an average of 5 to 6 days after infection.|https://www.who.int/docs/default-source/coronaviruse/who-china-joint-mission-on-covid-19-final-report.pdf
+The mean incubation period is 5 to 6 days and the range is 1 to 14 days.|https://www.who.int/docs/default-source/coronaviruse/who-china-joint-mission-on-covid-19-final-report.pdf
+COVID-19 is spreading from person to person in parts of the United States.|https://www.cdc.gov/coronavirus/2019-ncov/downloads/2019-ncov-factsheet.pdf
+The virus that causes COVID-19 probably emerged from an animal source, but is now spreading from person to person.|https://www.cdc.gov/coronavirus/2019-ncov/downloads/2019-ncov-factsheet.pdf
+People can help protect themselves from respiratory illness with everyday preventive actions such as avoiding close contact with sick people and touching your face with unwashed hands, and cleaning your hand frequently.|https://www.cdc.gov/coronavirus/2019-ncov/downloads/2019-ncov-factsheet.pdf
+There is currently no vaccine to protect against COVID-19.|https://www.cdc.gov/coronavirus/2019-ncov/downloads/2019-ncov-factsheet.pdf
+There is no specific antiviral treatment for COVID-19.|https://www.cdc.gov/coronavirus/2019-ncov/downloads/2019-ncov-factsheet.pdf
+People with COVID-19 can seek medical care to help relieve symptoms.|https://www.cdc.gov/coronavirus/2019-ncov/downloads/2019-ncov-factsheet.pdf
+You should stay home when you are sick.|https://www.cdc.gov/coronavirus/2019-ncov/downloads/2019-ncov-factsheet.pdf
+Older adults and people of any age who have serious underlying medical conditions may be at higher risk for more serious complications from COVID-19.|https://www.cdc.gov/coronavirus/2019-ncov/daily-life-coping/share-facts.html
+Fear and anxiety about COVID-19 can cause people to avoid or reject others even though they are not at risk for spreading the virus.|https://www.cdc.gov/coronavirus/2019-ncov/daily-life-coping/share-facts.html
+The symptoms of COVID-19 are fever, cough, and shortness of breath.|https://www.cdc.gov/coronavirus/2019-ncov/daily-life-coping/share-facts.html
+REMOVE:
+There is currently no vaccine to protect against COVID-19.|https://www.cdc.gov/coronavirus/2019-ncov/downloads/2019-ncov-factsheet.pdf

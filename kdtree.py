@@ -1,5 +1,4 @@
 import numpy as np
-from utils import distance
 import heapq
 
 # KDTree implementation
@@ -99,3 +98,8 @@ class BoundedPriorityQueue:
         # insert new element
         heapq.heappush(self.heap, value)
         heapq.heapify(self.heap) # Build min heap
+
+
+# Returns the euclidean distance between two vectors
+def distance(vec1, vec2):
+    return np.linalg.norm(vec1 - vec2)

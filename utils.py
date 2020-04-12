@@ -2,14 +2,10 @@ import numpy as np
 import webbrowser
 import embeddings
 
-# Returns the euclidean distance between two vectors
-def distance(vec1, vec2):
-    return np.linalg.norm(vec1 - vec2)
-
 # Gets the best answers
 def get_best_answers(question, count, tree):
     vec = embeddings.get_question_embeddings([question,])[0]
-    ans = tree.get_best_answers(vec, count)
+    ans = tree.get_best_vectors(vec, count)
     answers = []
     # Creating a json
     for answer in ans:
