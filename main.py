@@ -27,8 +27,9 @@ def thread_function():
             for change in changes:
                 database.update_database_with_file(c, conn, change)
             tree = database.database_to_tree(c)
+            print("Database edit complete")
         if running:
-            time.sleep(30) # Check once every minute
+            time.sleep(30) # Check once every hminute
     database.close_database(c, conn)
 
 # Internet checker thread
@@ -50,10 +51,7 @@ def search():
 
 @app.route("/shutdown")
 def shutdown():
-    global running, thread, c, conn
-    running = False
-    thread.join()
-    database.close_database(c, conn)
+    global c, conn
     func = request.environ.get("werkzeug.server.shutdown")
     if func is None:
         return
@@ -66,3 +64,6 @@ def shutdown():
 if __name__ == '__main__':
     launch_default_browser(PORT)
     app.run(host='127.0.0.1', port=PORT)
+    running = False
+    thread.join()
+    database.close_database(c, conn)
