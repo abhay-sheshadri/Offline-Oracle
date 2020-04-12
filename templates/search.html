@@ -5,11 +5,45 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
     </head>
     <body>
-        {% for answer in answers %}
-            <div class="answer-cell">
-                <h5> {{ answer["answer"] }} </h5>
-                <a href="{{ answer['source'] }}" > {{ answer["source"] }}</a>
+        <div class="top-part">
+            <div class="search-box">
+                <input id="searcher" class="search-txt" type="text" name="" placeholder="Ask any question">
+                <a id = "searchButton" href="javascript:getUrl()" >
+                   <img class="search-btn-image" src="{{ url_for('static', filename='img/search.png') }}"> 
+                </a>
             </div>
-        {% endfor %}
+        </div>
+        <div class= main-part>
+            <hr>
+            {% for answer in answers %}
+                <div class="answer-cell">
+                    <p class="sentence"> {{ answer["answer"] }} </p>
+                    <a href="{{ answer['source'] }}" class="source-link" > {{ answer["source"] }}</a>
+                </div>
+            <hr>
+            {% endfor %}
+        </div>
+
+
+        <script>
+            function getUrl() {
+                var searcher = document.getElementById("searcher");
+                window.location.href = "search?q=" + encodeURIComponent(searcher.value)
+            }
+            
+            var box = document.getElementById("searcher")
+
+            let params = (new URL(document.location)).searchParams;
+            let q = params.get("q");
+            box.value = decodeURIComponent(q);
+
+            box.addEventListener("keyup", function(event) {
+                event.preventDefault();
+                if (event.keyCode === 13) {
+                    getUrl();
+                }
+            });
+        </script>
+
     </body>
 </html>
