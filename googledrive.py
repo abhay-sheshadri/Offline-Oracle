@@ -1,14 +1,41 @@
-from googleapiclient.discovery import build
-from google_auth_oauthlib.flow import InstalledAppFlow
-from google.auth.transport.requests import Request
-import socket, os
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
+import os
+import socket
 
-SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly']
+# Authenticate the user
+def auth():
+    gauth = GoogleAuth()
+    gauth.LocalWebserverAuth()
+    return GoogleDrive(gauth)
 
-# Gets the google drive api service
-flow = InstalledAppFlow.from_client_secrets_file("credentials.json", SCOPES)
-creds = flow.run_local_server(port=0)
-service = build('drive', 'v3', credentials=creds)
+
+# Get a list of the files in the 'Offline Oracle Updates' folder in google drive
+def get_files(drive):
+    folder_id = '1arH7DVoP8CKSa7cwAdmoiOOQZp8II6B4'
+    file_list = drive.ListFile({'q': "'{}' in parents and trashed=false".format(folder_id)}).GetList()
+    file_data = {}
+    for file1 in file_list:
+        file_data[file1['title']] = file1['id']
+    return file_data
+
+# Download a file from the 'Offline Oracle Updates' folder in google drive by file id
+def download_file(file_id, file_name, drive):
+    f = drive.CreateFile({"id": file_id})
+    f.GetContentFile(os.path.abspath("updates/"+file_name))
+
+
+# Downloads the list of files which are in the google drive but not the folder
+def get_different(drive):
+    # google drive file names and ids
+    drive_data = get_files(drive)
+    drive_names = set(drive_data.keys())
+    # Files in folder names
+    folder_names = set(os.listdir(os.path.abspath("updates")))
+    # Get difference
+    for f in folder_names.symmetric_difference(drive_names):
+        f_id = drive_data[f]
+        download_file(f_id, f, drive)
 
 # Checks if there is an internet connection present
 def check_internet():
@@ -19,24 +46,4 @@ def check_internet():
     except OSError:
         return False
 
-# Get filenames and ids from the folder
-def get_names_and_ids():
-    results = service.files().list(
-        pageSize=size,
-        fields="nextPageToken, files(id, name)"
-    ).execute()
-
-
-# uploads a file into google drive folder. Will be placed in the "Offline Oracle Updates" folder
-def upload_file(file_path, file_name):
-    file_path = os.path.abspath(file_path)
-    file_metadata ={
-        "name": file_name,
-    }
-    media = MediaFileUpload(file_path, mimetype="")
-    f = service.files().create(body=file_metadata, media)
-
-# Get file from google drive.  Must be in the "Offline Oracle Updates" folder.  Downloaded file will be placed in the updates folder.
-def download_file(file_name):
-    pass
-
+# get_different(auth())
