@@ -30,12 +30,13 @@ def create_table(dim):
 
 # Adds an entry into the database
 def add_entry(sentence, source, vector):
-    global c
+    global c, conn
     c.execute("INSERT INTO responseData (sentence, source, arr) VALUES(?, ?, ?)", (sentence, source, vector))
     conn.commit()
 
 # Inputs multiple entries
 def add_multiple_entries(array, window=10):
+    global c, conn
     for i in range(len(array)):
         sentence, source, vector = array[i]
         c.execute("INSERT INTO responseData (sentence, source, arr) VALUES(?, ?, ?)", (sentence, source, vector))
@@ -44,6 +45,7 @@ def add_multiple_entries(array, window=10):
 
 # Checks if the sentence is in the database
 def is_in_database(sentence):
+    global c
     c.execute("SELECT sentence FROM responseData WHERE sentence == ?", (sentence,) )
     if c.fetchall():
         return True
@@ -51,11 +53,13 @@ def is_in_database(sentence):
 
 # Remove an entry
 def remove_entry(sentence):
+    global c, conn
     c.execute("DELETE FROM responseData WHERE sentence == ?", (sentence,) )
     conn.commit()
 
 # Removes multiple entries
 def remove_multiple_entries(array, window=10):
+    global c, conn
     for i in range(len(array)):
         c.execute("DELETE FROM responseData WHERE sentence == ?", (array[i],) )
         if (i + 1) % window:
@@ -63,6 +67,7 @@ def remove_multiple_entries(array, window=10):
 
 # Database to KDTree
 def database_to_tree(dim=512):
+    global c
     c.execute("SELECT * FROM responseData")
     res = []
     for sentence, source, vector in c.fetchall():
